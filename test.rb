@@ -37,3 +37,24 @@ end
 if not guessed_it
   puts "Sorry. You didn't get my number. (It was #{target}.)"
 end
+str1 = "string"
+puts str1.to_i
+#methods
+# rule1 if there are no parameters we not use brackets!
+# rule2 idf there are parameters we use brackets
+def sum(arg1, arg2)
+  print arg1+arg2
+end
+#not necessary args:
+def order_soda(flavor, size = "medium", quantity = 1) #here we use default parameters: size, quantity
+  if quantity == 1
+    plural = "soda"
+  else plural = "sodas"
+  end
+    puts "#{quantity} #{size} #{flavor} #{plural}, coming right up!"
+end
+def use_headlights(brightness = "low-beam")
+  puts "Turning on #{brightness} headlights"
+  puts "Watch out for deer!"
+end
+#difference between args and params - first are to be send to a method, second are added when the method is defined
