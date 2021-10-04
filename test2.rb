@@ -49,3 +49,13 @@ Tower1 = Tower.new
 Tower1.name = "Piza"
 Tower1.height = 566
 Tower1.report_info
+class TowerCool
+  attr_accessor :name, :height #symbolik names, here we defined 4 methods!
+  def report_info
+    puts "The name of Tower is #{name} and Height is #{height}"
+  end
+end
+Tower2 = TowerCool.new
+Tower2.name = "Piza"
+Tower2.height = 566
+Tower2.report_info
