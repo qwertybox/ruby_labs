@@ -35,11 +35,12 @@
 # .idea/compiler.xml
 # .idea/jarRepositories.xml
 # .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
+ .idea/*.iml
+ .idea/modules
 # *.iml
 # *.ipr
-
+./idea/*
+./idea
 # CMake
 cmake-build-*/
 
