@@ -10,7 +10,8 @@ class Dog
     puts "Bark!" end
   def move(destination)
     puts "Running to the #{destination}."
-  end end
+  end
+ end
 class Cat
   def talk
     puts "Meow!" end
@@ -46,7 +47,7 @@ class Tower
   end
 end
 Tower1 = Tower.new
-Tower1.name = "Piza"
+Tower1.name = "Pizza"
 Tower1.height = 566
 Tower1.report_info
 class TowerCool

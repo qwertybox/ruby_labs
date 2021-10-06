@@ -41,7 +41,7 @@ str1 = "string"
 puts str1.to_i
 #methods
 # rule1 if there are no parameters we not use brackets!
-# rule2 idf there are parameters we use brackets
+# rule2 if there are parameters we use brackets
 def sum(arg1, arg2)
   print arg1+arg2
 end
