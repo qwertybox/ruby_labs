@@ -1,3 +1,4 @@
+
 class Animal
   attr_reader :name, :age
   def name=(value) if value == ""
@@ -17,8 +18,10 @@ class Animal
     puts "#{@name} is #{@age} years old."
   end
 end
-
 class Dog < Animal
+  def to_s #redefination of to_s method
+    "#{@name} the dog, age #{age}"
+  end
 end
 class Cat <Animal
   def talk
@@ -59,3 +62,14 @@ puts Friend.new.greeting
 # Но в одном отношении ключевое слово super отличается от обычного вызова метода:
 # если аргументы не указаны, то метод из суперкласса автоматически вызывается
 # с теми же аргументами, которые были переданы методу из субкласса.
+lucy = Dog.new
+lucy.name = "Lucy"
+lucy.age = 4
+rex = Dog.new
+rex.name = "Rex"
+rex.age = 2
+puts lucy.to_s, rex.to_s
+puts lucy, rex #the same as above
+puts Animal.superclass #object - superclass for all classes (C# the same)
+puts rex.instance_variables # returns list of variables in this object
+puts lucy.inspect # преобразует в строку для отладки
