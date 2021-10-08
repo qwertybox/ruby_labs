@@ -13,7 +13,7 @@ class Employee
   end
   def print_pay_stub
     puts "Name: #{@name}"
-    pay_for_period = (@salary / 365) * 14
+    pay_for_period = (@salary / 365.0) * 14
     puts "Pay This Period: $#{pay_for_period}"
   end
 
@@ -25,3 +25,6 @@ amy = Employee.new
 amy.name = "Amy Blake"
 amy.salary = 50000
 puts amy
+amy.print_pay_stub #here are no cents
+# nil in ruby its the same as null in C#
+# все математические операторы передаются в виде методов
