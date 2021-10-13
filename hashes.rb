@@ -42,3 +42,10 @@ class Candidatee
 end
 p Candidatee.new("Carl Barnes", age: 49, occupation: "Attorney")
 #p Candidatee.new("Carl Barnes") # error
+Carl = Candidatee.new("Carl Barnes", age: 49, occupation: "Attorney")
+Lucy = Candidatee.new("Lucy Barnes", age: 45, occupation: "Attorney")
+Carlo = Carl # here we just shared the link to the Carl object in the heap
+Carlo.name = "Carlo"
+puts Carl.object_id # SAME AS CARLO
+puts Lucy.object_id
+puts Carlo.object_id # SAME as Carl bc they are the same object
