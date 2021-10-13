@@ -20,6 +20,7 @@ end
 # должны заключаться в do...end
 def run_block
   yield
+  yield
 end
 run_block do
   puts "do/end"

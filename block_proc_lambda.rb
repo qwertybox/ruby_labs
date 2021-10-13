@@ -26,7 +26,8 @@ def lambda_test
   lam.call
   puts 'Лямбда напечатает!'
 end
-lambda_test #  лямбда не останвливает выполнение метода
+lambda_test #  лямбда не останвливает выполнение метода, прок как раз останавливает
+# выполнение метода при вызове ретурн - в этом и есть отличие
 def proc_test
   proc = Proc.new { return }
   proc.call
@@ -37,3 +38,27 @@ proc_test # ничего не выводит, выполнение остано�
 # Вместо объявления метода вы как бы записываете его в переменную.
 function = lambda { |x| x ** 2 }
 puts function.call(15)
+lambda = lambda { |arg| puts "I am lambda #{arg}." }
+stabby_lambda = -> (arg) { puts "I am also lambda #{arg}." }
+lambda.call "Argument"
+# I am lambda Argument.
+stabby_lambda.call "Argument"
+# I am also lambda Argument.
+# Lambdas can also be called in multiple ways.
+lambda = lambda { |name| puts "Hello #{name}!" }
+
+lambda.call "Ruby"
+lambda.("Ruby")
+lambda["Ruby"]
+lambda.=== "Ruby"
+# in action
+# &(ampersand) short form for
+# calling the method to_proc on the
+# variable we stored. Also, & is the one
+# responsible for converting a lambda / proc to block.
+double_it = -> (num) { num * 2}
+puts [1,2,3,4,5].map(&double_it)
+# proc - procedure
+# Proc.new block
+proc = Proc.new { puts "I am proc, New instance of Proc class." }
+proc.call
