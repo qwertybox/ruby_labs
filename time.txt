@@ -1,1 +1,2 @@
 Rainbow: Mon:1000-2000;Tue:1000-2000;Wed:1000-2000;Thu:1000-2000;Fri:1000-1900;Sat:off;Sun:off
+Seven Hills: Mon:0930-2100;Tue:0900-2100;Wed:0900-2100;Thu:0900-2100;Fri:1000-2000;Sat:off;Sun:off

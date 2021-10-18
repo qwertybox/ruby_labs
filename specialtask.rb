@@ -29,7 +29,6 @@ file.close
 
 information.each_line do |line|
   puts "*** #{line.split(': ')[0]} ***" # returns name
-
   line.chomp.split(': ')[1].split(';').each do |day_time| # each element with weekday and time day:time
     day = hash[day_time.split(':')[0]]
     time = day_time.split(':')[1]
