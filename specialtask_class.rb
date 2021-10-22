@@ -12,7 +12,7 @@
 class FirstPart
   def initialize
     readfile
-    @hash = {
+    @weekdays = {
       'Mon' => 'Monday',
       'Tue' => 'Tuesday',
       'Wed' => 'Wednesday',
@@ -27,7 +27,7 @@ class FirstPart
     @information.each_line do |line|
       @shop_name = line.split(': ')[0] #  name
       line.chomp.split(': ')[1].split(';').each do |day_time| # each element with weekday and time day:time
-        @day = @hash[day_time.split(':')[0]]
+        @day = @weekdays[day_time.split(':')[0]]
         @time = day_time.split(':')[1]
         printrez
       end
