@@ -23,15 +23,35 @@ class FirstPart
     }.freeze
   end
 
-  def show_timetable
+  def parse_daytime
+    @time_table_hash = []
     @information.each_line do |line|
-      @shop_name = line.split(': ')[0] #  name
+      shop_name = line.split(': ')[0] #  name
       line.chomp.split(': ')[1].split(';').each do |day_time| # each element with weekday and time day:time
-        @day = @weekdays[day_time.split(':')[0]]
-        @time = day_time.split(':')[1]
-        printrez
+        day = @weekdays[day_time.split(':')[0]]
+        time = day_time.split(':')[1]
+        @time_table_hash << {'name' => shop_name, 'day' => day, 'time' => time}
       end
     end
+    puts "*** #{@time_table_hash[7]} ***"
+  end
+
+  def print_output
+    i = 0
+    @time_table_hash.each do |time_line|
+      if i % 7 == 0
+        puts "*** #{time_line['name']} ***"
+      else
+        time = time_line['time']
+        day = time_line['day']
+        if time == 'off'
+          puts "#{day}: day off"
+        else
+          puts "#{day}: #{putdots(time.split('-')[0])} - #{putdots(time.split('-')[1])}"
+        end
+      end
+      i = i + 1
+      end
   end
 
   private
@@ -44,16 +64,8 @@ class FirstPart
   def putdots(string)
     "#{string[0..1]}:#{string[2..3]}"
   end
-
-  def printrez
-    puts "*** #{@shop_name} ***"
-    if @time == 'off'
-      puts "#{@day}: day off"
-    else
-      puts "#{@day}: #{putdots(@time.split('-')[0])} - #{putdots(@time.split('-')[1])}"
-    end
-  end
 end
 
 MyCLass = FirstPart.new
-MyCLass.show_timetable
+MyCLass.parse_daytime
+MyCLass.print_output
