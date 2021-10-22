@@ -41,17 +41,17 @@ class FirstPart
     @time_table_hash.each do |time_line|
       if i % 7 == 0
         puts "*** #{time_line['name']} ***"
+      end
+      time = time_line['time']
+      day = time_line['day']
+      if time == 'off'
+        puts "#{day}: day off"
       else
-        time = time_line['time']
-        day = time_line['day']
-        if time == 'off'
-          puts "#{day}: day off"
-        else
-          puts "#{day}: #{putdots(time.split('-')[0])} - #{putdots(time.split('-')[1])}"
-        end
+        puts "#{day}: #{putdots(time.split('-')[0])} - #{putdots(time.split('-')[1])}"
       end
       i = i + 1
       end
+
   end
 
   private
