@@ -8,7 +8,10 @@
 # Friday: 10:00 - 19:00
 # Saturday: day off
 # Sunday: day off
-
+# class
+# hash
+# methods
+#
 def two_dots(string)
   "#{string[0..1]}:#{string[2..3]}"
 end
