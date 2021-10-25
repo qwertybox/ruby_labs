@@ -9,7 +9,7 @@
 # Saturday: day off
 # Sunday: day off
 #
-class ScedulerParser
+class FirstPart
   def initialize
     readfile
     @weekdays = {
@@ -49,8 +49,7 @@ class ScedulerParser
         puts "#{day}: #{putdots(time.split('-')[0])} - #{putdots(time.split('-')[1])}"
       end
       i = i + 1
-      end
-
+    end
   end
 
   private
@@ -65,6 +64,6 @@ class ScedulerParser
   end
 end
 
-scdule = ScedulerParser.new # add file location
-scdule.parse_daytime
-scdule.print_output
+MyCLass = FirstPart.new
+MyCLass.parse_daytime
+MyCLass.print_output
