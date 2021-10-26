@@ -9,7 +9,7 @@ class ScedulerParser
     'Sun' => 'Sunday'
   }.freeze
 
-  def initialize path
+  def initialize (path)
     readfile path
   end
 
@@ -18,24 +18,24 @@ class ScedulerParser
   end
 
   def print
-    # print
+    # implement method
   end
 
   private
 
-  def readfile path
+  def readfile (path)
     file = File.open(path)
     @lines = file.read
     file.close
   end
-
 end
 
 class ShopParser < ScedulerParser
+
   def parse_file
     @rezult = []
     @lines.each_line do |row|
-      name, time_line = parse_shopname row
+      name, time_line = name_scedule row
       @rezult << {'name' => name, 'time_line' => time_line}
     end
   end
@@ -43,25 +43,26 @@ class ShopParser < ScedulerParser
   def print
     @rezult.each do |schedule|
       puts schedule['name']
-      print_day(schedule['time_line'])
+      prnt_daytime(schedule['time_line'])
     end
   end
 
   private
-  def print_day(timeline)
+
+  def prnt_daytime (timeline)
     timeline.each do |day_time|
       day_time.each_pair do |day, time|
         day = WEEKDAYS[day]
         if time[0] == 'off'
           puts "#{day}: day off"
-        else
-          puts "#{day}: #{time[0]} - #{time[1]}"
+          next
         end
+        puts "#{day}: #{time[0]} - #{time[1]}"
       end
     end
   end
 
-  def parse_shopname (row)
+  def name_scedule (row)
     name = row.chomp.split(': ')[0] #  name
     timeline = parse_timeline(row.chomp.split(': ')[1].split(';'))
     #[name], [timeline]
@@ -70,25 +71,28 @@ class ShopParser < ScedulerParser
   end
 
   def parse_timeline (days_times) # array day:time
-    # logic
     # return {Monday,[t1,t2]}, {Tuesday,[t1,t2]}....
     timelin_arr = []
     days_times.each do |day_time|
-      day = day_time.split(':')[0] # returns day
+      day = parse_day(day_time) # returns day
       times = parse_time(day_time.split(':')[1])# returns [t1,t2]
       timelin_arr << {"#{day}" => times}
     end
     timelin_arr
   end
 
-  public def parse_time (time)
+  public def parse_day (day_time)
+    day_time.split(':')[0]
+  end
+
+   def parse_time (time)
     return 'off', 'off' if time == 'off'
     time1 = putdots(time.split('-')[0])
     time2 = putdots(time.split('-')[1])
     return time1, time2
   end
 
-  def putdots(string)
+  def putdots (string)
     "#{string[0..1]}:#{string[2..3]}"
   end
 end
