@@ -33,17 +33,18 @@ end
 class ShopParser < ScedulerParser
 
   def parse_file
-    @rezult = []
+    @rezult = {}
     @lines.each_line do |row|
       name, time_line = name_scedule row
-      @rezult << {'name' => name, 'time_line' => time_line}
+      @rezult[name] = time_line#@rezult << {'name' => name, 'time_line' => time_line
     end
+    puts @rezult
   end
 
   def print
-    @rezult.each do |schedule|
-      puts schedule['name']
-      prnt_daytime(schedule['time_line'])
+    @rezult.each_pair do |name, schedule|
+      puts "***#{name}***"
+      prnt_daytime(schedule)
     end
   end
 
