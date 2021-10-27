@@ -82,7 +82,7 @@ class ShopParser < ScedulerParser
     timelin_arr
   end
 
-  public def parse_day(day_time)
+  def parse_day(day_time)
     day_time.split(':')[0]
   end
 
