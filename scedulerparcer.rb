@@ -1,12 +1,12 @@
 class ScedulerParser
   WEEKDAYS = {
-    'Mon' => 'Monday',
-    'Tue' => 'Tuesday',
-    'Wed' => 'Wednesday',
-    'Thu' => 'Thursday',
-    'Fri' => 'Friday',
-    'Sat' => 'Saturday',
-    'Sun' => 'Sunday'
+    Mon: 'Monday',
+    Tue: 'Tuesday',
+    Wed: 'Wednesday',
+    Thu: 'Thursday',
+    Fri: 'Friday',
+    Sat: 'Saturday',
+    Sun: 'Sunday'
   }.freeze
 
   def initialize(path)
@@ -33,16 +33,16 @@ end
 class ShopParser < ScedulerParser
 
   def parse_file
-    @rezult = {}
+    @parced_file = {}
     @lines.each_line do |line|
       name, time_line = name_scedule(line)
-      @rezult[name] = time_line#@rezult << {'name' => name, 'time_line' => time_line
+      @parced_file[name] = time_line
     end
-    puts @rezult
+    puts @parced_file
   end
 
   def print
-    @rezult.each_pair do |name, schedule|
+    @parced_file.each_pair do |name, schedule|
       puts "***#{name}***"
       prnt_daytime(schedule)
     end
@@ -53,8 +53,8 @@ class ShopParser < ScedulerParser
   def prnt_daytime(timeline)
     timeline.each do |day_time|
       day_time.each_pair do |day, time|
-        day = WEEKDAYS[day]
-        if time[0] == 'off'
+        day = WEEKDAYS[day.to_sym]
+        if time[0] == ''
           puts "#{day}: day off"
           next
         end
@@ -63,20 +63,20 @@ class ShopParser < ScedulerParser
     end
   end
 
+  #[name], [timeline]
+  # timeline = {Monday,[t1,t2]}, {Tuesday,[t1,t2]}.....
   def name_scedule(line)
-    name = line.chomp.split(': ')[0] #  name
+    name = line.chomp.split(': ')[0]
     timeline = parse_timeline(line.chomp.split(': ')[1].split(';'))
-    #[name], [timeline]
-    # timeline = {Monday,[t1,t2]}, {Tuesday,[t1,t2]}.....
     return name, timeline
   end
 
-  def parse_timeline(days_times) # array day:time
-    # return {Monday,[t1,t2]}, {Tuesday,[t1,t2]}....
+  # return {Monday,[t1,t2]}, {Tuesday,[t1,t2]}....
+  def parse_timeline(days_times)
     timelin_arr = []
     days_times.each do |day_time|
-      day = parse_day(day_time) # returns day
-      times = parse_time(day_time.split(':')[1])# returns [t1,t2]
+      day = parse_day(day_time)
+      times = parse_time(day_time.split(':')[1])
       timelin_arr << {"#{day}" => times}
     end
     timelin_arr
@@ -87,7 +87,7 @@ class ShopParser < ScedulerParser
   end
 
    def parse_time(time)
-    return 'off', 'off' if time == 'off'
+    return '', '' if time == 'off'
     time1 = putdots(time.split('-')[0])
     time2 = putdots(time.split('-')[1])
     return time1, time2
