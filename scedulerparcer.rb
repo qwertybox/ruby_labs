@@ -3,10 +3,6 @@ class ScedulerParser
     readfile path
   end
 
-  def parse_file
-    # implement method
-  end
-
   def print
     # implement method
   end
@@ -21,6 +17,11 @@ class ScedulerParser
     Sat: 'Saturday',
     Sun: 'Sunday'
   }.freeze
+
+
+  def parse_file
+    # implement method
+  end
 
   private
   def readfile(path)
