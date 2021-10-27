@@ -1,14 +1,4 @@
 class ScedulerParser
-  WEEKDAYS = {
-    Mon: 'Monday',
-    Tue: 'Tuesday',
-    Wed: 'Wednesday',
-    Thu: 'Thursday',
-    Fri: 'Friday',
-    Sat: 'Saturday',
-    Sun: 'Sunday'
-  }.freeze
-
   def initialize(path)
     readfile path
   end
@@ -21,8 +11,18 @@ class ScedulerParser
     # implement method
   end
 
-  private
+  protected
+  WEEKDAYS = {
+    Mon: 'Monday',
+    Tue: 'Tuesday',
+    Wed: 'Wednesday',
+    Thu: 'Thursday',
+    Fri: 'Friday',
+    Sat: 'Saturday',
+    Sun: 'Sunday'
+  }.freeze
 
+  private
   def readfile(path)
     file = File.open(path)
     @lines = file.read
