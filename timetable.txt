@@ -1,4 +1,4 @@
-type_1:  Rainbow: Mon:1000-2000;Tue:1000-2000;Wed:1000-2000;Thu:1000-2000;Fri:1000-1900;Sat:off;Sun:off
+type_2:  Rainbow: Mon:1000-2000;Tue:1000-2000;Wed:1000-2000;Thu:1000-2000;Fri:1000-1900;Sat:off;Sun:off
 Seven Hills: Mon:0930-2100;Tue:0900-2100;Wed:0900-2100;Thu:0900-2100;Fri:1000-2000;Sat:off;Sun:off
 Candy-Candy: Mon:off;Tue:1000-2200;Wed:1000-2200;Thu:off;Fri:0900-2300;Sat:0900-2300;Sun:0900-2300
 Well Dome: Mon:off;Tue:1000-2100;Wed:1000-2100;Thu:1000-2100;Fri:0900-2130;Sat:0900-2130;Sun:off
