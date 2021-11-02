@@ -1,0 +1,11 @@
+---
+1: !ruby/object:Movie
+  title: Back to the future
+  director: Robert B. Weide
+  year: '2001'
+  id: 1
+2: !ruby/object:Movie
+  title: Captain
+  director: Robert B. Weide
+  year: '1997'
+  id: 2
